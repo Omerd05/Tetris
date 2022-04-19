@@ -1,0 +1,20 @@
+﻿@font-face {
+    font-family: TetrisFont;
+    src: url("TetrisFont.ttf");
+}
+body{
+    background-color:darkorange;
+}
+.FavFont {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 100;
+    font-size:24px;
+    color:snow;
+}
+.Normal {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: snow;
+}
+#main{
+    font-family:TetrisFont;
+}
