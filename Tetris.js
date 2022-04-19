@@ -1,3 +1,4 @@
+// comment for updating github
 var board = new Array(20); //Boolean 2d array saving if there is a block at (x,y) cords
 var score = 0; //player's score throught the round
 var isExistNow = false;
