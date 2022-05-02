@@ -2,8 +2,9 @@
     font-family: TetrisFont;
     src: url("TetrisFont.ttf");
 }
-body{
-    background-color:darkorange;
+body {
+    background-image: url("Wallpaper2.jpg");
+    background-color: #cccccc;
 }
 .FavFont {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -17,4 +18,15 @@ body{
 }
 #main{
     font-family:TetrisFont;
+    color:snow;
 }
+div{ 
+ width:100%; 
+ height:100vh; 
+ position:relative; 
+} 
+canvas{ 
+ position:absolute; 
+ top:0;bottom:0;right:0;left:0; 
+ margin:auto; 
+} 

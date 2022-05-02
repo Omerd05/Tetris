@@ -6,27 +6,43 @@
     <title></title>
 </head>
 <body>
-    <table id="tbl1">
-        <tr>
+    <table id="tbl1" align="center">
+        <tr id="woosh">
             <td>
-                <p id="main" style="font-size:32px">
-                    Tetris
+                <p id="main" style="font-size:32px;">
+                    T
                 </p>
                 <p class="FavFont">
                     By : Omer Drori
                 </p>
-                <p style="font-size :12px" class="Normal"> Developed using : <a href="https://he.wikipedia.org/wiki/JavaScript">Javascript</a>, <a href="https://he.wikipedia.org/wiki/HTML">HTML</a> and <a href="https://he.wikipedia.org/wiki/%D7%92%D7%99%D7%9C%D7%99%D7%95%D7%A0%D7%95%D7%AA_%D7%A1%D7%92%D7%A0%D7%95%D7%9F_%D7%9E%D7%93%D7%95%D7%A8%D7%92%D7%99%D7%9D">CSS </a>></p>
+                <p class="FavFont">
+                    Right & Left Keys To Move, Up Key To Rotate, Down Key For A Small Fall And Ctrl For Instant Falldown.
+                </p>
             </td>
         </tr>
         <tr>
             <td>
-                <p class="Normal" style="font-size:18px">
-                    To Start Play, Press The Space Bar.
+                <p class="Normal" style="font-size:24px" id="newGame">
+                    To Start Playing, Press The Space Bar.
                 </p>
             </td>
         </tr>
     </table>
-    <canvas id="myCanvas" width="400" height="800"></canvas>
+    <table>
+        <tr>
+            <td class="Normal" style="font-size:24px">
+                <p id="scoreBoard"></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p></p>
+            </td>
+        </tr>
+    </table>
+    <div>
+        <canvas id="myCanvas" width="400" height="800"></canvas>
+    </div>
     <link rel="stylesheet" href="Styles.css" />
     <script type="text/javascript" src="Tetris.js"></script>
 </body>
