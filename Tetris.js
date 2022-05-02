@@ -123,7 +123,7 @@ function Rotation(type) { //piece type
                     }
                     break;
                 case 1:
-                    if (y3 < 19 && !board[x3][y3 + 1] && !board[x3 + 1][y3 + 1]) {
+                    if (x3 < 9 && y3 < 19 && !board[x3][y3 + 1] && !board[x3 + 1][y3 + 1]) {
                         Swap(x3 + 1, x3, x3, x3 - 1, y3 + 1, y3 + 1, y3, y3 + 1);
                         rot++;
                     }
@@ -158,41 +158,7 @@ function Rotation(type) { //piece type
     }
 }
 function leftOrRight(changer) {
-    if (y1 == 0 || y2 == 0 || y3 == 0 || y4 == 0) {
-        return;
-    }
-    if (board[x1][y1 - 1]) {
-        var a = y1 - 1 == y2 && x1 == x2;
-        var b = y1 - 1 == y3 && x1 == x3;
-        var c = y1 - 1 == y4 && x1 == x4;
-        if (!(a || b || c)) {
-            return;
-        }
-    }
-    if (board[x2][y2 - 1]) {
-        var a = y2 - 1 == y1 && x2 == x1;
-        var b = y2 - 1 == y3 && x2 == x3;
-        var c = y2 - 1 == y4 && x2 == x4;
-        if (!(a || b || c)) {
-            return;
-        }
-    }
-    if (board[x3][y3 - 1]) {
-        var a = y3 - 1 == y2 && x3 == x2;
-        var b = y3 - 1 == y1 && x3 == x1;
-        var c = y3 - 1 == y4 && x3 == x4;
-        if (!(a || b || c)) {
-            return;
-        }
-    }
-    if (board[x4][y4 - 1]) {
-        var a = y4 - 1 == y2 && x4 == x2;
-        var b = y4 - 1 == y3 && x4 == x3;
-        var c = y4 - 1 == y1 && x4 == x1;
-        if (!(a || b || c)) {
-            return;
-        }
-    }
+    if (!isExistNow) { return;}
     if (x1 == 9 && changer > 0) {
         return;
     }
@@ -217,6 +183,46 @@ function leftOrRight(changer) {
     if (x4 == 0 && changer < 0) {
         return;
     }
+
+
+    var mini = Math.min(y1, y2, y3, y4);
+    var flag = false;
+    if (mini == y1)
+        if (y1 > 0 && board[x1][y1 - 1]) {
+            if (board[x1 + changer][y1 - 1]) { flag = true; }
+        }
+        else {
+            flag = true;
+        }
+
+    if (mini == y2) {
+        if (y2 > 0 && board[x2][y2 - 1]) {
+            if (board[x2 + changer][y2 - 1]) { flag = true; }
+        }
+        else {
+            flag = true;
+        }
+    }
+    if (mini == y3) {
+        if (y3 > 0 && board[x3][y3 - 1]) {
+            if (board[x3 + changer][y3 - 1]) { flag = true; }
+        }
+        else {
+            flag = true;
+        }
+    }
+    if (mini == y4) {
+        if (y4 > 0 && board[x4][y4 - 1]) {
+            if (board[x4 + changer][y4 - 1]) { flag = true; }
+        }
+        else {
+            flag = true;
+        }
+    }
+    if (!flag) {
+        return;
+    }
+
     if (changer == 1) {
         if (board[x1 + 1][y1]) {
             var a = x1 + 1 == x2 && y1 == y2;
@@ -287,7 +293,7 @@ function leftOrRight(changer) {
         }
     }
     //
-    CordXChange(changer, changer, changer, changer);
+CordXChange(changer, changer, changer, changer);
 }
 function CreatePiece() {
     if (!isExistNow) {
@@ -439,6 +445,8 @@ function FallingDown() {
     }
 }
 function drawBoard() {
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = "black";
     ctx.clearRect(0, 0, c.width, c.height);
     ctx.beginPath();
     ctx.rect(0, 0, 400, 800);
@@ -522,6 +530,7 @@ function gameOver() {
     ctx.fillText("Game Over - Your Score Is : " + score, c.width / 2, c.height / 2);
     var tmp = document.getElementById("newGame");
     tmp.innerHTML = "<a href='Tetris.html'>For A New Game, Press Here</a>";;
+    document.getElementById("scoreBoard").remove();
 
 }
 function Swap(a1, a2, a3, a4, b1, b2, b3, b4) {
